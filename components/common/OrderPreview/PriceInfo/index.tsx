@@ -1,6 +1,6 @@
 import { TProductItem } from '@/store/productList/type';
 import { TBasketItem } from '@/store/basket/type';
-import { getBasketTotalPrice } from '@/helpers/getBasketTotalPrice';
+import { getBasketTotalPrice } from '@/components/Basket/helpers';
 
 import cx from './index.module.scss';
 

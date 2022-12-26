@@ -1,59 +1,76 @@
-import { useEffect } from 'react';
 import { Skeleton } from 'antd';
 
+import BasketHeader from '@/components/Basket/BasketItems/BasketHeader';
 import EmptyBasket from '@/components/common/EmptyBasket';
 import BasketProductCard from '@/components/Basket/BasketItems/BasketProductCard';
-import BasketBuyButton from '@/components/Basket/BasketItems/BasketBuyButton';
+import BasketSummary from '@/components/Basket/BasketItems/BasketSummary';
+import {
+  isAllBasketChecked,
+  getBasketTotalPrice,
+  getBasketCount,
+} from '@/components/Basket/helpers';
 
 import {
   getBasketDataSource,
   getBasketLoading,
 } from '@/store/basket/selectors';
-import { getProductListAction } from '@/store/productList/thunk';
-import { getProductListDataSource } from '@/store/productList/selectors';
+import {
+  getProductListDataSource,
+  getProductListLoading,
+} from '@/store/productList/selectors';
 
-import { useAppDispatch, useAppSelector } from '@/hooks/store';
-import { getBasketTotalPrice } from '@/helpers/getBasketTotalPrice';
+import { useAppSelector } from '@/hooks/store';
 
 import cx from './index.module.scss';
 
-const BasketProductList = () => {
-  const dispatch = useAppDispatch();
+const Basket = () => {
+  const products = useAppSelector(getProductListDataSource);
+  const basket = useAppSelector(getBasketDataSource);
 
-  const allProducts = useAppSelector(getProductListDataSource); //TODO: fetch by ids
-  const basketItems = useAppSelector(getBasketDataSource);
+  const basketLoading = useAppSelector(getBasketLoading);
+  const productsLoading = useAppSelector(getProductListLoading);
 
-  const loading = useAppSelector(getBasketLoading); //TODO: check errors fetch products
-
-  useEffect(() => {
-    dispatch(getProductListAction());
-  }, []);
-
-  if (loading) {
+  if (basketLoading || productsLoading) {
     return <Skeleton active />;
   }
 
-  if (!basketItems?.length) {
-    return <EmptyBasket />;
-  }
-
   return (
-    <>
-      <div className={cx.basketProductList}>
-        {basketItems.map((product) => {
-          if (product.amount)
-            return (
-              <BasketProductCard
-                product={allProducts[product.productId]}
-                amount={product.amount}
-                key={product.productId}
-              />
-            );
-        })}
-      </div>
-      <BasketBuyButton total={getBasketTotalPrice(basketItems, allProducts)} />
-    </>
+    <div className={cx.wrapper}>
+      <BasketHeader basketCount={basket ? getBasketCount(basket, false) : 0} />
+
+      {!basket?.length ? (
+        <EmptyBasket />
+      ) : (
+        <div>
+          <label className={cx.chooseAll}>
+            <input type="checkbox" checked={isAllBasketChecked(basket)} />
+            выбрать все
+          </label>
+
+          <div className={cx.basketBody}>
+            <div className={cx.basketProductList}>
+              {basket.map((product) => {
+                if (product.amount)
+                  return (
+                    <BasketProductCard
+                      product={products[product.productId]}
+                      amount={product.amount}
+                      checked={product.checked}
+                      key={product.productId}
+                    />
+                  );
+              })}
+            </div>
+            <BasketSummary
+              truePrice={getBasketTotalPrice(basket, products)}
+              oldPrice={getBasketTotalPrice(basket, products, false)}
+              count={getBasketCount(basket)}
+            />
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
-export default BasketProductList;
+export default Basket;

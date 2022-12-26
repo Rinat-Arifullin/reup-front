@@ -9,4 +9,5 @@ export type TBasketStore = {
 export type TBasketItem = {
   productId: number;
   amount: number;
+  checked: boolean;
 };

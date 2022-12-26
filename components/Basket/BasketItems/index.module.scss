@@ -1,31 +1,28 @@
-.emptyBasket {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  height: 30rem;
+.wrapper {
+  padding: 0 50px;
 
-  div {
-    font-size: 30px;
-    line-height: 36px;
-    font-weight: 700;
-    text-transform: lowercase;
-  }
-
-  .goHomeButton {
+  .chooseAll {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-left: 227px;
+    margin-bottom: 32px;
+    font-style: normal;
+    font-weight: 300;
     font-size: 20px;
-    line-height: 24px;
-    font-weight: 700;
-    color: #8a8a8a;
-    text-transform: lowercase;
+    line-height: 110%;
+    letter-spacing: 0.07em;
   }
-}
 
-.basketProductList {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding-bottom: 4rem;
+  .basketBody {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+
+    .basketProductList {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
 }

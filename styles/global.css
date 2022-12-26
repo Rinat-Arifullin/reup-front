@@ -1,46 +1,76 @@
 :root {
-    --reup-unit: .25rem;
-    --reup-radius: 5px;
+  --reup-unit: 0.25rem;
+  --reup-radius: 5px;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 * {
-    font-family: 'Gilroy' , sans-serif;
+  font-family: 'Gilroy', sans-serif;
 }
 
 @font-face {
-    font-family: 'Gilroy', sans-serif;
-    src: url("../static/fonts/gilroy/Gilroy-Black.ttf");
+  font-family: 'Gilroy', sans-serif;
+  src: url('../static/fonts/gilroy/Gilroy-Black.ttf');
 }
 
-.w100{
-    width: 100%;
+.w100 {
+  width: 100%;
 }
 
 .iconBnt {
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 button {
-    outline: 2px solid black;
-    border: none;
-    cursor: pointer;
-    transition: .3s;
-    background: transparent;
-    font-family: 'Gilroy', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 21px;
-    letter-spacing: 0.07em;
-    padding: calc(var(--reup-unit ) * 2 ) calc(var(--reup-unit ) * 6);
+  outline: 2px solid black;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  background: transparent;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0.07em;
+  padding: calc(var(--reup-unit) * 2) calc(var(--reup-unit) * 6);
 }
-button:hover{
-    background: #8B30F2;
-    color: white
+button:hover {
+  background: #8b30f2;
+  color: white;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #000;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+input[type='checkbox']::before {
+  content: '';
+  width: 16px;
+  height: 8px;
+  transform: scale(0);
+  border: 2px solid #fff;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  margin: 10px 6px;
+}
+
+input[type='checkbox']:checked::before {
+  transform: scale(1) translateY(-2px) rotate(-0.125turn);
 }

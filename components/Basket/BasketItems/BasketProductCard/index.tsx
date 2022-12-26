@@ -1,71 +1,68 @@
 import Link from 'next/link';
-import { Button, Image, Card, Tooltip } from 'antd';
-import { DeleteOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import Image from 'next/image';
+import { Tooltip } from 'antd';
 
 import { TProductItem } from '@/store/productList/type';
-import { basketProductCard } from '@/constants/componentsSizes';
 import { EPagesRoutes } from '@/constants/router';
-import { multiplyRem } from '@/helpers/multiplyRem';
+import { decoratePrice } from '@/helpers/decoratePrice';
+import deleteIcon from '@/static/icons/delete.svg';
 
 import cx from './index.module.scss';
 
 interface IProps {
   product: TProductItem;
   amount: number;
+  checked: boolean;
 }
 
-const BasketProductCard = ({ product, amount }: IProps) => {
+const BasketProductCard = ({ product, amount, checked }: IProps) => {
   return (
-    <div className={cx.basketProductCard}>
-      <Link href={`${EPagesRoutes.ProductDetail}/${product.id}`}>
-        <Image
-          width={basketProductCard.height}
-          height={basketProductCard.height}
-          preview={false}
-          src={product.imgSource.src}
-          alt="product image"
-        />
+    <div className={cx.wrapper}>
+      <Link
+        className={cx.linkImage}
+        href={`${EPagesRoutes.ProductDetail}/${product.id}`}
+      >
+        <Image src={product.imgSource} alt="product image" />
       </Link>
 
-      <Card
-        title={product.title}
-        style={{
-          width: basketProductCard.height,
-          height: basketProductCard.height,
-        }}
-        extra={<a href={`${EPagesRoutes.ProductDetail}/${product.id}`}>More</a>}
-        headStyle={{
-          height: multiplyRem(basketProductCard.height, 0.2),
-        }}
-        bodyStyle={{
-          height: multiplyRem(basketProductCard.height, 0.8),
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-        }}
-      >
-        <p>{product.description}</p>
+      <input type="checkbox" checked={checked} />
 
-        <div className={cx.priceAndAmount}>
-          <div>{product.price} ₽</div>
-          <div className={cx.amount}>
-            <Button type="text" size="small" icon={<MinusOutlined />} />
+      <div className={cx.cardBody}>
+        <div className={cx.top}>
+          <div>
+            <div className={cx.bold}>{product.title}</div>
+            <div className={cx.bold}>тип товара</div>
+            <div>название бренда</div>
+            <div className={cx.params}>
+              <div>цвет: черный</div>
+              <div>размер: 46</div>
+            </div>
+          </div>
+
+          <Tooltip title="удалить товар из корзины">
+            <button className="iconBnt">
+              <Image src={deleteIcon} alt="deleteIcon" />
+            </button>
+          </Tooltip>
+        </div>
+
+        <div className={cx.bottom}>
+          <div className={cx.counter}>
+            <button className="iconBnt">-</button>
             <div>{amount}</div>
-            <Button type="text" size="small" icon={<PlusOutlined />} />
+            <button className="iconBnt">+</button>
+          </div>
+
+          <div className={cx.price}>
+            <div className={cx.oldPrice}>
+              {/*TODO: replace with old price (without discound) */}
+              {decoratePrice((product.price + 1000) * amount)} ₽
+            </div>
+            <div className={cx.truePrice}>
+              {decoratePrice(product.price * amount)} ₽
+            </div>
           </div>
         </div>
-      </Card>
-
-      <div className={cx.deleteButton}>
-        <Tooltip title="delete">
-          <Button
-            danger
-            type="text"
-            shape="circle"
-            size="large"
-            icon={<DeleteOutlined />}
-          />
-        </Tooltip>
       </div>
     </div>
   );

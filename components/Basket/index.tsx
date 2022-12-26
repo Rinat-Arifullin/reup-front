@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 
-import BasketPageHeader from '@/components/Basket/Header';
-import BasketProductList from '@/components/Basket/BasketItems';
+import Basket from '@/components/Basket/BasketItems';
+import Recommendations from '@/components/Basket/Recommendations';
+
+import { getProductListAction } from '@/store/productList/thunk';
 
 import { getBasketAction } from '@/store/basket/thunk';
 import { useAppDispatch } from '@/hooks/store';
@@ -10,14 +12,15 @@ const BasketLayout = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(getProductListAction());
     dispatch(getBasketAction());
   }, []);
 
   return (
-    <div className="w100">
-      <BasketPageHeader />
-      <BasketProductList />
-    </div>
+    <>
+      <Basket />
+      <Recommendations />
+    </>
   );
 };
 

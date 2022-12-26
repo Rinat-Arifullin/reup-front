@@ -1,0 +1,65 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 544px;
+  padding: 56px;
+  border: 2px solid #000;
+
+  .total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 110%;
+    letter-spacing: 0.07em;
+    margin-bottom: 16px;
+  }
+
+  .priceDetails {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 110%;
+    letter-spacing: 0.07em;
+
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+  }
+
+  .promo {
+    height: 42px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 32px 0;
+    border: 0;
+    border-radius: 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 110%;
+    letter-spacing: 0.07em;
+    background: #eaeaea;
+
+    &::placeholder {
+      color: #000;
+      font-weight: 300;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .checkoutBtn {
+    height: 80px;
+    width: 100%;
+    padding: 0;
+    font-family: 'Dela Gothic One';
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: 0.04em;
+  }
+}

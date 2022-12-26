@@ -10,6 +10,7 @@ for (let i = 0; i < randomInteger(0, 4); i++) {
   mockData.push({
     productId: i,
     amount: randomInteger(1, 3),
+    checked: !!randomInteger(0, 1),
   });
 }
 

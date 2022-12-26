@@ -1,23 +1,105 @@
-.basketProductCard {
+.wrapper {
   display: flex;
-  align-items: center;
+  gap: 24px;
+  height: 243px;
+  width: 772px;
 
-  img {
-    object-fit: cover;
-  }
+  .linkImage {
+    height: 100%;
 
-  .priceAndAmount {
-    display: flex;
-    justify-content: space-between;
-
-    .amount {
-      width: 25%;
-      display: flex;
-      justify-content: space-between;
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 203px;
     }
   }
 
-  .deleteButton {
-    margin-left: 1rem;
+  .cardBody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 110%;
+      letter-spacing: 0.07em;
+
+      .bold {
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .params {
+        display: flex;
+        gap: 20px;
+        margin-top: 32px;
+      }
+
+      button {
+        padding: 0;
+        height: 24px;
+        width: 24px;
+        &:hover {
+          background-color: transparent;
+          color: #000;
+        }
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .counter {
+        height: 56px;
+        width: 186px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 110%;
+        letter-spacing: 0.07em;
+        border: 2px solid #000;
+
+        button {
+          padding: 0;
+          height: 100%;
+          width: 33%;
+          font-weight: 500;
+          font-size: 24px;
+          &:hover {
+            background-color: transparent;
+            color: #000;
+          }
+        }
+      }
+
+      .price {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 110%;
+        letter-spacing: 0.07em;
+
+        .oldPrice {
+          text-decoration: line-through;
+          margin-bottom: 8px;
+        }
+        .truePrice {
+          font-size: 32px;
+          line-height: 100%;
+        }
+      }
+    }
   }
 }
