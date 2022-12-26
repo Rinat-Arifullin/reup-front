@@ -1,0 +1,27 @@
+.slider{
+    display: flex;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    .slide{
+      overflow: hidden;
+      flex: 1;
+      transition: .3s;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      background: black;
+      img {
+        width: auto;
+        text-align: center;
+        opacity: .5;
+        transition: .3s;
+      }
+      &.active{
+        img {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  

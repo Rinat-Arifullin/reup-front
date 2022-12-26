@@ -19,6 +19,7 @@ import classNames from 'classnames';
 const MainPageComponents = () => {
   const dispatch = useAppDispatch();
   const newProducts = useAppSelector(getProductListDataSource);
+  
 
   useEffect(() => {
     dispatch(getProductListAction());

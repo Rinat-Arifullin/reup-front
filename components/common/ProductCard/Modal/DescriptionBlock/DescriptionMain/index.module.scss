@@ -1,0 +1,11 @@
+.descriptionOverflow {
+    overflow-y: scroll;
+    margin-top: 0;
+    padding-top: 0;
+    p {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 26.4px;
+        letter-spacing: 7%;
+    }
+}

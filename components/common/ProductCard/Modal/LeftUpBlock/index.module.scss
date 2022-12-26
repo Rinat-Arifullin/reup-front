@@ -1,0 +1,16 @@
+.leftUpBlockLike {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .like {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 999;
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+            transition: 0.3s;
+        }
+    }
+}  

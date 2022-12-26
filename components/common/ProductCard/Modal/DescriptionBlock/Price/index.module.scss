@@ -1,0 +1,57 @@
+.btnPrice {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    .price {
+        align-self: flex-start;
+        margin-top: 1.5em;
+        .throughPrice {
+            text-decoration: line-through;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 26.4px;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+        .activePrice {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 35.2px;
+            letter-spacing: 0.1em;
+        }
+    }
+    button {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 26.4px;
+        letter-spacing: 0.1em;
+    }
+    .chooseSize {
+        margin-top: 10px;
+        position: relative; 
+        div {
+            box-sizing: border-box;
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 26.4px;
+            letter-spacing: 0.1em;
+        }
+        .arrowDown {
+            position: absolute;
+            width: 16px;
+            height: 8px;
+            right: 15px;
+            top: 20px;
+        }
+    }
+    .appCart {
+        margin-top: 15px;
+        width: 100%;
+        
+        button {
+            width: 100%;
+        }
+    }
+}  
